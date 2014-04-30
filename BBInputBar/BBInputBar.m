@@ -130,6 +130,7 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 	}
 }
 
+
 #pragma mark - Private methods
 
 - (void)createButtons:(NSInteger)numberOfButtons
@@ -168,6 +169,12 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 			self.buttonWidthCache[i] = kDefaultButtonWidth;
 		}
 	}
+}
+
+- (CGFloat)calculateButtonWidthForButtonAtIndex:(NSInteger)buttonIndex
+{
+
+	return 0.0;
 }
 
 #pragma mark - UIView

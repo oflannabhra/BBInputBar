@@ -51,7 +51,6 @@
 
 		_imageView = ({
 			UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-
 			imageView;
 		});
 
@@ -85,8 +84,6 @@
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	self.backgroundImageView.highlighted = YES;
-
-
 
 	return YES;
 }

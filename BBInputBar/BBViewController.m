@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
 
-	self.buttonTitles = @[@"!", @"\"", @"§", @"$", @"%", @"&", @"/", @"(", @")"];
+	self.buttonTitles = @[@"Hallo", @"*", @"(", @")"];
 
 	BBInputBar *inputBar = [[BBInputBar alloc] initWithTitles:self.buttonTitles];
 	inputBar.delegate = self;

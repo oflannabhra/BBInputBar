@@ -1,31 +1,24 @@
 # BBInputBar
 
-## Beschreibung
-BBInputBar ist eine Erweiterung für die iOS-Tastatur, welche aus einem Bereich oberhalb der Tastatur besteht und eine beliebige Anzahl an Buttons enthält. So lässt sich die Standardfunktionalität der Tastatur um eigene Buttons erweitern. Die InputBar fügt sich nahtlos an die Tastatur an, standardmäßig sehen die Buttons in der Bar exakt so aus wie die Tastatur-Buttons.
+BBInputBar is a custom control to extend the iOS keyboard. It mimics the look and feel of the default (light) keyboard and can be configured to display icons or text. The buttons are positioned in the center with automatically calculated widths.
 
+![BBInputBar](screenshot.png)
 
+## Usage
+Since there is no way to extend the keyboard via Interface Builder, BBInputBar must be created and configured via code. Fortunately this is pretty staightforward:
 
-## Benutzung
-### Initialisierung
-Die BDInputBar lässt sich auf verschiedene Art und Weise initialisieren. 
-
-`- (instancetype)initWithButtonTitles:(NSArray*)buttonTitles;`
-
-Die InputBar wird auf die Standardgröße `320.0 x 44.0` initialisiert, und mit `buttonTitles.count` Buttons befüllt, welche jeweils den entsprechenden Titel aus dem übergebenen `NSArray` erhalten.
-
-`- (instancetype)initWithButtonImages:(NSArray*)buttonImages;`
-
-Die InputBar wird auf die Standardgröße `320.0 x 44.0` initialisiert, und mit `buttonImages.count` Buttons befüllt, welche jeweils das entsprechende Bild aus dem übergebenen `NSArray` erhalten.
-
-### BDInputBarDataSource
-
-
-
-### BDInputBarDelegate
-
-
-
-### Beispiel
-	BDInputBar *inputBar = [[BDInputBar alloc] initWithTitles:@[@"-", @"_", @"@", @"&"]];
+	self.buttonTitles = @[@"Q", @"W", @"E", @"R", @"T", @"Z", @"U", @"I", @"O"];
+	BBInputBar *inputBar = [[BBInputBar alloc] initWithTitles:self.buttonTitles];
+	inputBar.delegate = self;
 	self.textView.inputAccessoryView = inputBar;
+
+You can receive button-press-events via the `BBInputBarDelegate`-protocol, which consists of two methods.
+
+	- (void)inputBar:(BBInputBar*)inputBar didPressButtonAtIndex:(NSInteger)index;
+
+Gets called every time one of the buttons is pressed. It gives the index of the button, as well as the instance of the input bar.
+
+	- (CGFloat)inputBar:(BBInputBar*)inputBar widthForButtonAtIndex:(NSInteger)index;
+
+With this method you can customize the button width of every button. The buttons will still be centered, but the calculation now respects the custom button sizes.
 
