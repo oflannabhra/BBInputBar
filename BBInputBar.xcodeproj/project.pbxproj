@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3D62A2218F7D7E50077BAB3 /* BBInputBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D62A2118F7D7E50077BAB3 /* BBInputBarButton.m */; };
+		B3E308FE18F935270086CB11 /* KeyboardButtonImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3E308FD18F935270086CB11 /* KeyboardButtonImages.xcassets */; };
 		B3F71AB518F5591400F81BD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F71AB418F5591400F81BD2 /* Foundation.framework */; };
 		B3F71AB718F5591400F81BD2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F71AB618F5591400F81BD2 /* CoreGraphics.framework */; };
 		B3F71AB918F5591400F81BD2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F71AB818F5591400F81BD2 /* UIKit.framework */; };
@@ -22,6 +24,7 @@
 		B3F71AD918F5591500F81BD2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F71AB818F5591400F81BD2 /* UIKit.framework */; };
 		B3F71AE118F5591500F81BD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3F71ADF18F5591500F81BD2 /* InfoPlist.strings */; };
 		B3F71AE318F5591500F81BD2 /* BBInputBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F71AE218F5591500F81BD2 /* BBInputBarTests.m */; };
+		B3F71AEF18F55ACE00F81BD2 /* BBInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F71AEE18F55ACE00F81BD2 /* BBInputBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B3D62A2018F7D7E50077BAB3 /* BBInputBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBInputBarButton.h; sourceTree = "<group>"; };
+		B3D62A2118F7D7E50077BAB3 /* BBInputBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBInputBarButton.m; sourceTree = "<group>"; };
+		B3E308FD18F935270086CB11 /* KeyboardButtonImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = KeyboardButtonImages.xcassets; sourceTree = "<group>"; };
 		B3F71AB118F5591400F81BD2 /* BBInputBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBInputBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F71AB418F5591400F81BD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3F71AB618F5591400F81BD2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,6 +61,8 @@
 		B3F71ADE18F5591500F81BD2 /* BBInputBarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BBInputBarTests-Info.plist"; sourceTree = "<group>"; };
 		B3F71AE018F5591500F81BD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B3F71AE218F5591500F81BD2 /* BBInputBarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBInputBarTests.m; sourceTree = "<group>"; };
+		B3F71AED18F55ACE00F81BD2 /* BBInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBInputBar.h; sourceTree = "<group>"; };
+		B3F71AEE18F55ACE00F81BD2 /* BBInputBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBInputBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +124,12 @@
 			children = (
 				B3F71AC318F5591400F81BD2 /* BBAppDelegate.h */,
 				B3F71AC418F5591400F81BD2 /* BBAppDelegate.m */,
-				B3F71AC618F5591400F81BD2 /* Main_iPhone.storyboard */,
-				B3F71AC918F5591400F81BD2 /* Main_iPad.storyboard */,
+				B3F71AEC18F55AB400F81BD2 /* BBInputBar */,
 				B3F71ACC18F5591400F81BD2 /* BBViewController.h */,
 				B3F71ACD18F5591400F81BD2 /* BBViewController.m */,
 				B3F71ACF18F5591400F81BD2 /* Images.xcassets */,
+				B3F71AC918F5591400F81BD2 /* Main_iPad.storyboard */,
+				B3F71AC618F5591400F81BD2 /* Main_iPhone.storyboard */,
 				B3F71ABB18F5591400F81BD2 /* Supporting Files */,
 			);
 			path = BBInputBar;
@@ -153,6 +162,18 @@
 				B3F71ADF18F5591500F81BD2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3F71AEC18F55AB400F81BD2 /* BBInputBar */ = {
+			isa = PBXGroup;
+			children = (
+				B3F71AED18F55ACE00F81BD2 /* BBInputBar.h */,
+				B3F71AEE18F55ACE00F81BD2 /* BBInputBar.m */,
+				B3D62A2018F7D7E50077BAB3 /* BBInputBarButton.h */,
+				B3D62A2118F7D7E50077BAB3 /* BBInputBarButton.m */,
+				B3E308FD18F935270086CB11 /* KeyboardButtonImages.xcassets */,
+			);
+			name = BBInputBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +256,7 @@
 				B3F71AD018F5591400F81BD2 /* Images.xcassets in Resources */,
 				B3F71AC818F5591400F81BD2 /* Main_iPhone.storyboard in Resources */,
 				B3F71ABF18F5591400F81BD2 /* InfoPlist.strings in Resources */,
+				B3E308FE18F935270086CB11 /* KeyboardButtonImages.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +276,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F71ACE18F5591400F81BD2 /* BBViewController.m in Sources */,
+				B3D62A2218F7D7E50077BAB3 /* BBInputBarButton.m in Sources */,
 				B3F71AC518F5591400F81BD2 /* BBAppDelegate.m in Sources */,
+				B3F71AEF18F55ACE00F81BD2 /* BBInputBar.m in Sources */,
 				B3F71AC118F5591400F81BD2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +494,7 @@
 				B3F71AE818F5591500F81BD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3F71AE918F5591500F81BD2 /* Build configuration list for PBXNativeTarget "BBInputBarTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +503,7 @@
 				B3F71AEB18F5591500F81BD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

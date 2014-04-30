@@ -18,18 +18,16 @@ typedef NS_ENUM(NSInteger, BBInputBarAnimation)
 
 @class BBInputBar;
 
-@protocol BDInputBarDelegate <NSObject>
+@protocol BBInputBarDelegate <NSObject>
 @optional
 - (CGFloat)inputBar:(BBInputBar*)inputBar widthForButtonAtIndex:(NSInteger)index;
-- (CGFloat)inputBar:(BBInputBar*)inputBar backgroundColorForButtonAtIndex:(NSInteger)index;
-
 - (void)inputBar:(BBInputBar*)inputBar didPressButtonAtIndex:(NSInteger)index;
 @end
 
 
 @interface BBInputBar : UIInputView
 
-@property (nonatomic, weak) id<BDInputBarDelegate> delegate;
+@property (nonatomic, weak) id<BBInputBarDelegate> delegate;
 
 - (instancetype)initWithTitles:(NSArray*)titles;
 - (instancetype)initWithImages:(NSArray*)images;
@@ -37,7 +35,6 @@ typedef NS_ENUM(NSInteger, BBInputBarAnimation)
 
 - (void)setTitle:(NSString*)title atIndex:(NSInteger)index;
 - (void)setImage:(UIImage*)image atIndex:(NSInteger)index;
-- (void)setTitle:(NSString*)title image:(UIImage*)image atIndex:(NSInteger)index;
 
 - (void)updateTitles:(NSArray*)titles animation:(BBInputBarAnimation)animation;
 - (void)updateImages:(NSArray*)images animation:(BBInputBarAnimation)animation;

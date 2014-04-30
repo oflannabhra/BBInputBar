@@ -1,25 +1,31 @@
-# UIImageView-Placekitten
-=======================
+# BBInputBar
 
-This is a simple category on UIImageView that downloads placeholder images from [placekitten](www.placekitten.com). It can be used during development when you need to show an image in an image view but are too lazy to setup an placeholder image that fits. Often image sizes change during development and it's a waste of time to keep placeholder images up to date. This category downloads placeholder images displaying cute kitten pictures that always fit to the current size of the image view. Downloading takes place in the background and the image view shows an activity indicator while downloading the placeholder image.
+## Beschreibung
+BBInputBar ist eine Erweiterung für die iOS-Tastatur, welche aus einem Bereich oberhalb der Tastatur besteht und eine beliebige Anzahl an Buttons enthält. So lässt sich die Standardfunktionalität der Tastatur um eigene Buttons erweitern. Die InputBar fügt sich nahtlos an die Tastatur an, standardmäßig sehen die Buttons in der Bar exakt so aus wie die Tastatur-Buttons.
 
-## Installation  
-Clone this repository or download the .zip-file and just copy the two source files for the category into your own project. 
 
-## Usage  
-There are three methods in the category.
 
-	+ (instancetype)placeholderImageViewWithFrame:(CGRect)frame;
+## Benutzung
+### Initialisierung
+Die BDInputBar lässt sich auf verschiedene Art und Weise initialisieren. 
 
-Instantiates a new UIImageView object with the given frame and loads a placeholder image using the *setPlaceholderImage* method.
+`- (instancetype)initWithButtonTitles:(NSArray*)buttonTitles;`
 
-	- (void)setPlaceholderImage;
+Die InputBar wird auf die Standardgröße `320.0 x 44.0` initialisiert, und mit `buttonTitles.count` Buttons befüllt, welche jeweils den entsprechenden Titel aus dem übergebenen `NSArray` erhalten.
 
-Loads a placeholder image from [placekitten.com](www.placekitten.com) fitting to the bounds of the image view. Download takes place on a background queue using Grand Central Dispatch.
+`- (instancetype)initWithButtonImages:(NSArray*)buttonImages;`
 
-	- (void)setPlaceholderImageWithCompletionBlock:(void (^)())completion;
+Die InputBar wird auf die Standardgröße `320.0 x 44.0` initialisiert, und mit `buttonImages.count` Buttons befüllt, welche jeweils das entsprechende Bild aus dem übergebenen `NSArray` erhalten.
 
-Loads a placeholder image from [placekitten.com](www.placekitten.com) fitting to the bounds of the image view. Download takes place on a background queue using Grand Central Dispatch and a completion block is invoked when the download has finished and the image was set.
+### BDInputBarDataSource
 
-## Licensing
-The source code is published under a **public domain license**. Do whatever you want with the source code and spread kittens over the world!
+
+
+### BDInputBarDelegate
+
+
+
+### Beispiel
+	BDInputBar *inputBar = [[BDInputBar alloc] initWithTitles:@[@"-", @"_", @"@", @"&"]];
+	self.textView.inputAccessoryView = inputBar;
+
