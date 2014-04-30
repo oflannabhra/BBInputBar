@@ -78,7 +78,6 @@
 }
 
 
-
 #pragma mark - UIControl
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
@@ -94,8 +93,24 @@
 }
 
 
-
 #pragma mark - Accessors
+
+- (CGFloat)buttonWidth
+{
+	CGFloat buttonWidth = 0.0;
+
+	if (self.image)
+	{
+		buttonWidth = self.image.size.width;
+	}
+	else
+	{
+		CGSize textSize = [self.title sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
+		buttonWidth = textSize.width;
+	}
+
+	return buttonWidth;
+}
 
 - (void)setTitle:(NSString *)title
 {
@@ -117,5 +132,14 @@
 	}
 }
 
+- (NSString *)title
+{
+	return self.titleLabel.attributedText.string;
+}
+
+- (UIImage *)image
+{
+	return self.imageView.image;
+}
 
 @end

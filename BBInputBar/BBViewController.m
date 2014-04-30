@@ -13,7 +13,6 @@
 @interface BBViewController () <BBInputBarDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (nonatomic, strong) NSArray *buttonTitles;
-
 @end
 
 @implementation BBViewController
@@ -22,15 +21,12 @@
 {
     [super viewDidLoad];
 
-	self.buttonTitles = @[@"Hallo", @"*", @"(", @")"];
+	self.buttonTitles = @[@"Hallo", @"E", @"(", @")"];
 
 	BBInputBar *inputBar = [[BBInputBar alloc] initWithTitles:self.buttonTitles];
 	inputBar.delegate = self;
 	self.textView.inputAccessoryView = inputBar;
 	[self.textView becomeFirstResponder];
-
-
-
 
 }
 

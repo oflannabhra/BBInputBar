@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, readonly) CGFloat buttonWidth;
 
 @end
