@@ -12,9 +12,6 @@
 static CGFloat const kDefaultBarHeight = 54.0;
 static CGFloat const kDefaultBarWidth = 320.0;
 static CGRect const kDefaultBarFrame = {0.0, 0.0, kDefaultBarWidth, kDefaultBarHeight};
-static CGFloat const kDefaultButtonHeight = 38.0;
-static CGFloat const kDefaultButtonMinimumWidth = 26.0;
-static CGFloat const kDefaultButtonWidthPadding = 6.5;
 static CGFloat const kHorizontalButtonSpacing = 6.0;
 
 static NSString * const kExceptionTitle = @"BBInputBarException";
@@ -77,11 +74,13 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 - (void)setTitle:(NSString *)title atIndex:(NSInteger)index
 {
 	[self.buttons[index] setTitle:title];
+	[self generateButtonWidthCache];
 }
 
 - (void)setImage:(UIImage *)image atIndex:(NSInteger)index
 {
 	[self.buttons[index] setImage:image];
+	[self generateButtonWidthCache];
 }
 
 
@@ -177,7 +176,7 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 		else
 		{
 			BBInputBarButton *button = (BBInputBarButton*)self.buttons[i];
-			self.buttonWidthCache[i] = MAX(button.buttonWidth + (2 * kDefaultButtonWidthPadding), kDefaultButtonMinimumWidth);
+			self.buttonWidthCache[i] = MAX(button.buttonWidth + (2 * kDefaultButtonPadding), kDefaultButtonMinimumWidth);
 		}
 	}
 }

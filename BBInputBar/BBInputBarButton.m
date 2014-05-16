@@ -8,6 +8,12 @@
 
 #import "BBInputBarButton.h"
 
+
+CGFloat const kDefaultButtonHeight = 38.0;
+CGFloat const kDefaultButtonMinimumWidth = 26.0;
+CGFloat const kDefaultButtonPadding = 6.5;
+
+
 @interface BBInputBarButton ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -51,9 +57,9 @@
 
 		_imageView = ({
 			UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+			imageView.contentMode = UIViewContentModeScaleAspectFit;
 			imageView;
 		});
-
 
 		[self addSubview:_backgroundImageView];
 		[self addSubview:_imageView];
@@ -74,7 +80,18 @@
 	backgroundImageFrame.size.height += 1.0;
 	self.backgroundImageView.frame = backgroundImageFrame;
 	
-	self.titleLabel.frame = self.bounds;
+
+	if (self.image)
+	{
+		// Berechnen mit Padding
+		self.imageView.frame = CGRectInset(self.bounds, 2 * kDefaultButtonPadding, 0);
+		self.titleLabel.frame = CGRectZero;
+	}
+	else
+	{
+		self.imageView.frame = CGRectZero;
+		self.titleLabel.frame = self.bounds;
+	}
 }
 
 
@@ -101,7 +118,8 @@
 
 	if (self.image)
 	{
-		buttonWidth = self.image.size.width;
+		CGFloat rel = self.image.size.height / kDefaultButtonHeight + (2 * kDefaultButtonPadding);
+		buttonWidth = self.image.size.width / rel;
 	}
 	else
 	{

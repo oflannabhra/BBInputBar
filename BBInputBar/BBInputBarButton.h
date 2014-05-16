@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern CGFloat const kDefaultButtonHeight;
+extern CGFloat const kDefaultButtonMinimumWidth;
+extern CGFloat const kDefaultButtonPadding;
+
 
 @interface BBInputBarButton : UIControl
 

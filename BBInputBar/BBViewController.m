@@ -25,6 +25,8 @@
 
 	BBInputBar *inputBar = [[BBInputBar alloc] initWithTitles:self.buttonTitles];
 	inputBar.delegate = self;
+
+	[inputBar setImage:[UIImage imageNamed:@"test"] atIndex:2];
 	self.textView.inputAccessoryView = inputBar;
 	[self.textView becomeFirstResponder];
 
