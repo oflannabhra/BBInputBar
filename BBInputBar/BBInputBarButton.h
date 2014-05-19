@@ -19,4 +19,6 @@ extern CGFloat const kDefaultButtonPadding;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, readonly) CGFloat buttonWidth;
 
++ (instancetype)button;
+
 @end

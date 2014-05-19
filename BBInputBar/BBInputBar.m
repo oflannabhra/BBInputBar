@@ -16,6 +16,7 @@ static CGFloat const kHorizontalButtonSpacing = 6.0;
 
 static NSString * const kExceptionTitle = @"BBInputBarException";
 static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of button titles doesn't match number of images";
+static NSString * const kExceptionMessageTitleInvalidIndex = @"Index out of bounds, use 'addButtonWithTitle:' or 'addButtonWithImage:' instead";
 
 
 @interface BBInputBar ()
@@ -31,38 +32,38 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 
 - (instancetype)initWithTitles:(NSArray *)titles
 {
-    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleKeyboard];
+    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleDefault];
 
 	if (self)
 	{
 		[self createButtons:titles.count];
-		[self updateTitles:titles animation:BBInputBarAnimationNone];
+		[self updateTitles:titles];
     }
 
     return self;
 }
 
-- (instancetype)initWithImages:(NSArray *)images
+- (instancetype)initWithImages:(NSArray*)images
 {
-    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleKeyboard];
+    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleDefault];
 
 	if (self)
 	{
 		[self createButtons:images.count];
-		[self updateImages:images animation:BBInputBarAnimationNone];
+		[self updateImages:images];
     }
 
     return self;
 }
 
-- (instancetype)initWithTitles:(NSArray *)titles images:(NSArray *)images
+- (instancetype)initWithTitles:(NSArray*)titles images:(NSArray *)images
 {
-    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleKeyboard];
+    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleDefault];
 
 	if (self)
 	{
 		[self createButtons:titles.count];
-		[self updateTitles:titles images:images animation:BBInputBarAnimationNone];
+		[self updateTitles:titles images:images];
     }
 
     return self;
@@ -71,20 +72,42 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 
 #pragma mark - Public methods
 
-- (void)setTitle:(NSString *)title atIndex:(NSInteger)index
+- (void)addButtonWithTitle:(NSString*)title
 {
+	[self createButtons:1];
+	[self setTitle:title atIndex:self.buttons.count - 1];
+}
+
+- (void)addButtonWithImage:(UIImage*)image
+{
+	[self createButtons:1];
+	[self setImage:image atIndex:self.buttons.count - 1];
+}
+
+- (void)setTitle:(NSString*)title atIndex:(NSInteger)index
+{
+	if (index >= self.buttons.count)
+	{
+		[NSException raise:kExceptionTitle format:kExceptionMessageTitleInvalidIndex];
+	}
+
 	[self.buttons[index] setTitle:title];
 	[self generateButtonWidthCache];
 }
 
-- (void)setImage:(UIImage *)image atIndex:(NSInteger)index
+- (void)setImage:(UIImage*)image atIndex:(NSInteger)index
 {
+	if (index >= self.buttons.count)
+	{
+		[NSException raise:kExceptionTitle format:kExceptionMessageTitleInvalidIndex];
+	}
+
 	[self.buttons[index] setImage:image];
 	[self generateButtonWidthCache];
 }
 
 
-- (void)updateTitles:(NSArray *)titles animation:(BBInputBarAnimation)animation
+- (void)updateTitles:(NSArray*)titles
 {
 	for (int i = 0; i < self.buttons.count; i++)
 	{
@@ -95,7 +118,7 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 	[self generateButtonWidthCache];
 }
 
-- (void)updateImages:(NSArray *)images animation:(BBInputBarAnimation)animation
+- (void)updateImages:(NSArray*)images
 {
 	for (int i = 0; i < self.buttons.count; i++)
 	{
@@ -106,7 +129,7 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 	[self generateButtonWidthCache];
 }
 
-- (void)updateTitles:(NSArray *)titles images:(NSArray *)images animation:(BBInputBarAnimation)animation
+- (void)updateTitles:(NSArray*)titles images:(NSArray *)images
 {
 	if (titles.count != images.count)
 	{
@@ -124,7 +147,6 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 
 	[self generateButtonWidthCache];
 }
-
 
 
 #pragma mark - Action methods
@@ -146,21 +168,13 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 {
 	for (int i = 0; i < numberOfButtons; i++)
 	{
-		BBInputBarButton *button = [self createKeyboardButton];
+		BBInputBarButton *button = [BBInputBarButton button];
 		[button addTarget:self action:@selector(handleButtonPress:) forControlEvents:UIControlEventTouchUpInside];
 		[self.buttons addObject:button];
 		[self addSubview:button];
 	}
 
 	[self generateButtonWidthCache];
-}
-
-- (BBInputBarButton*)createKeyboardButton
-{
-
-	BBInputBarButton *button = [[BBInputBarButton alloc] initWithFrame:CGRectZero];
-
-	return button;
 }
 
 - (void)generateButtonWidthCache
@@ -186,6 +200,7 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 
 	return 0.0;
 }
+
 
 #pragma mark - UIView
 

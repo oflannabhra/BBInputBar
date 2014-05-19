@@ -21,12 +21,14 @@
 {
     [super viewDidLoad];
 
-	self.buttonTitles = @[@"Hallo", @"E", @"(", @")"];
-
-	BBInputBar *inputBar = [[BBInputBar alloc] initWithTitles:self.buttonTitles];
+	BBInputBar *inputBar = [[BBInputBar alloc] initWithTitles:@[]];
 	inputBar.delegate = self;
 
-	[inputBar setImage:[UIImage imageNamed:@"test"] atIndex:2];
+	for (int i = 0; i < 10; i++)
+	{
+		[inputBar addButtonWithTitle:[NSString stringWithFormat:@"%i", i]];
+	}
+
 	self.textView.inputAccessoryView = inputBar;
 	[self.textView becomeFirstResponder];
 
@@ -41,7 +43,6 @@
 
 - (void)inputBar:(BBInputBar *)inputBar didPressButtonAtIndex:(NSInteger)index
 {
-	NSLog(@"%@", self.buttonTitles[index]);
 
 }
 
