@@ -195,12 +195,6 @@ static NSString * const kExceptionMessageTitleInvalidIndex = @"Index out of boun
 	}
 }
 
-- (CGFloat)calculateButtonWidthForButtonAtIndex:(NSInteger)buttonIndex
-{
-
-	return 0.0;
-}
-
 
 #pragma mark - UIView
 

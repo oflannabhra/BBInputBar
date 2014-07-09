@@ -48,7 +48,6 @@ CGFloat const kDefaultButtonPadding = 4;
 			UIImage *backgroundImageNormal = [[UIImage imageNamed:@"backgroundImageNormal"] resizableImageWithCapInsets:insets];
 			UIImage *backgroundImageHightlighted = [UIImage imageNamed:@"backgroundImageHighlighted"];
 			UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImageNormal highlightedImage:backgroundImageHightlighted];
-			
 			backgroundImageView;
 		});
 		
@@ -119,17 +118,24 @@ CGFloat const kDefaultButtonPadding = 4;
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	self.backgroundImageView.highlighted = YES;
+	self.backgroundImageView.contentMode = UIViewContentModeBottom;
 
 	return YES;
 }
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
+	self.backgroundImageView.contentMode = UIViewContentModeScaleToFill;
 	self.backgroundImageView.highlighted = NO;
 }
 
 
 #pragma mark - Accessors
+
+//- (void)setFrame:(CGRect)frame
+//{
+//	[super setFrame:frame];
+//}
 
 - (CGFloat)buttonWidth
 {
