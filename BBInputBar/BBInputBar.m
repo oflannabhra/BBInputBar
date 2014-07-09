@@ -34,7 +34,7 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 
 - (instancetype)initWithTitles:(NSArray *)titles
 {
-    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleKeyboard];
+    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleDefault];
 
 	if (self)
 	{
@@ -47,7 +47,7 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 
 - (instancetype)initWithImages:(NSArray *)images
 {
-    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleKeyboard];
+    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleDefault];
 
 	if (self)
 	{
@@ -60,7 +60,7 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 
 - (instancetype)initWithTitles:(NSArray *)titles images:(NSArray *)images
 {
-    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleKeyboard];
+    self = [super initWithFrame:kDefaultBarFrame inputViewStyle:UIInputViewStyleDefault];
 
 	if (self)
 	{
@@ -125,7 +125,6 @@ static NSString * const kExceptionMessageTitleImageNumberMismatch = @"Number of 
 
 	[self generateButtonWidthCache];
 }
-
 
 
 #pragma mark - Action methods
