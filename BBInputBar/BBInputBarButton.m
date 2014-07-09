@@ -8,6 +8,12 @@
 
 #import "BBInputBarButton.h"
 
+
+CGFloat const kDefaultButtonHeight = 38.0;
+CGFloat const kDefaultButtonMinimumWidth = 26.0;
+CGFloat const kDefaultButtonPadding = 4;
+
+
 @interface BBInputBarButton ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -21,7 +27,12 @@
 
 #pragma mark - Initialization
 
-- (id)initWithFrame:(CGRect)frame
++ (instancetype)button
+{
+	return [[BBInputBarButton alloc] initWithFrame:CGRectZero];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
 
@@ -35,7 +46,7 @@
 		_backgroundImageView = ({
 			UIEdgeInsets insets = UIEdgeInsetsMake(3.0, 3.0, 4.0, 3.0);
 			UIImage *backgroundImageNormal = [[UIImage imageNamed:@"backgroundImageNormal"] resizableImageWithCapInsets:insets];
-			UIImage *backgroundImageHightlighted = [UIImage imageNamed:@"backgroundImageNormal"];
+			UIImage *backgroundImageHightlighted = [UIImage imageNamed:@"backgroundImageHighlighted"];
 			UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImageNormal highlightedImage:backgroundImageHightlighted];
 			
 			backgroundImageView;
@@ -46,14 +57,15 @@
 			titleLabel.textAlignment = NSTextAlignmentCenter;
 			titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:21.5];
 			titleLabel.backgroundColor = [UIColor clearColor];
+			titleLabel.lineBreakMode = NSLineBreakByClipping;
 			titleLabel;
 		});
 
 		_imageView = ({
 			UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+			imageView.contentMode = UIViewContentModeScaleAspectFit;
 			imageView;
 		});
-
 
 		[self addSubview:_backgroundImageView];
 		[self addSubview:_imageView];
@@ -71,10 +83,34 @@
 	[super layoutSubviews];
 	
 	CGRect backgroundImageFrame = self.bounds;
-	backgroundImageFrame.size.height += 1.0;
+//	backgroundImageFrame.size.height += 1.0;
 	self.backgroundImageView.frame = backgroundImageFrame;
-	
-	self.titleLabel.frame = self.bounds;
+
+	CGRect imageViewFrame;
+	CGRect titleLabelFrame;
+
+	if (self.image)
+	{
+		if (self.title && ![self.title isEqualToString:@""])
+		{
+			CGRectDivide(self.bounds, &imageViewFrame, &titleLabelFrame, self.bounds.size.height * 0.6, CGRectMinYEdge);
+			imageViewFrame = CGRectInset(imageViewFrame, kDefaultButtonPadding, 0);
+			self.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:7.0];
+		}
+		else
+		{
+			imageViewFrame = CGRectInset(self.bounds, kDefaultButtonPadding, 0);
+			titleLabelFrame = CGRectZero;
+		}
+	}
+	else
+	{
+		imageViewFrame = CGRectZero;
+		titleLabelFrame = self.bounds;
+	}
+
+	self.imageView.frame = imageViewFrame;
+	self.titleLabel.frame = titleLabelFrame;
 }
 
 
@@ -101,7 +137,8 @@
 
 	if (self.image)
 	{
-		buttonWidth = self.image.size.width;
+		CGFloat rel = self.image.size.height / kDefaultButtonHeight + (2 * kDefaultButtonPadding);
+		buttonWidth = self.image.size.width / rel;
 	}
 	else
 	{

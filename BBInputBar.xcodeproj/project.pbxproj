@@ -25,6 +25,7 @@
 		B3F71AE118F5591500F81BD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3F71ADF18F5591500F81BD2 /* InfoPlist.strings */; };
 		B3F71AE318F5591500F81BD2 /* BBInputBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F71AE218F5591500F81BD2 /* BBInputBarTests.m */; };
 		B3F71AEF18F55ACE00F81BD2 /* BBInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F71AEE18F55ACE00F81BD2 /* BBInputBar.m */; };
+		B3FC8C8519112ADC009821B5 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FC8C8419112ADC009821B5 /* test.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B3F71AE218F5591500F81BD2 /* BBInputBarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBInputBarTests.m; sourceTree = "<group>"; };
 		B3F71AED18F55ACE00F81BD2 /* BBInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBInputBar.h; sourceTree = "<group>"; };
 		B3F71AEE18F55ACE00F81BD2 /* BBInputBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBInputBar.m; sourceTree = "<group>"; };
+		B3FC8C8419112ADC009821B5 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		B3F71AEC18F55AB400F81BD2 /* BBInputBar */ = {
 			isa = PBXGroup;
 			children = (
+				B3FC8C8419112ADC009821B5 /* test.png */,
 				B3F71AED18F55ACE00F81BD2 /* BBInputBar.h */,
 				B3F71AEE18F55ACE00F81BD2 /* BBInputBar.m */,
 				B3D62A2018F7D7E50077BAB3 /* BBInputBarButton.h */,
@@ -256,6 +259,7 @@
 				B3F71AD018F5591400F81BD2 /* Images.xcassets in Resources */,
 				B3F71AC818F5591400F81BD2 /* Main_iPhone.storyboard in Resources */,
 				B3F71ABF18F5591400F81BD2 /* InfoPlist.strings in Resources */,
+				B3FC8C8519112ADC009821B5 /* test.png in Resources */,
 				B3E308FE18F935270086CB11 /* KeyboardButtonImages.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-typedef NS_ENUM(NSInteger, BBInputBarAnimation)
-{
-    BBInputBarAnimationNone,
-    BBInputBarAnimationFade
-};
-
-
 @class BBInputBar;
 
 @protocol BBInputBarDelegate <NSObject>
@@ -33,11 +25,14 @@ typedef NS_ENUM(NSInteger, BBInputBarAnimation)
 - (instancetype)initWithImages:(NSArray*)images;
 - (instancetype)initWithTitles:(NSArray*)titles images:(NSArray*)images;
 
+- (void)addButtonWithTitle:(NSString*)title;
+- (void)addButtonWithImage:(UIImage*)image;
+
 - (void)setTitle:(NSString*)title atIndex:(NSInteger)index;
 - (void)setImage:(UIImage*)image atIndex:(NSInteger)index;
 
-- (void)updateTitles:(NSArray*)titles animation:(BBInputBarAnimation)animation;
-- (void)updateImages:(NSArray*)images animation:(BBInputBarAnimation)animation;
-- (void)updateTitles:(NSArray*)titles images:(NSArray*)images animation:(BBInputBarAnimation)animation;
+- (void)updateTitles:(NSArray*)titles;
+- (void)updateImages:(NSArray*)images;
+- (void)updateTitles:(NSArray*)titles images:(NSArray*)images;
 
 @end
