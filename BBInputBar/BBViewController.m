@@ -43,7 +43,9 @@
 
 - (void)inputBar:(BBInputBar *)inputBar didPressButtonAtIndex:(NSInteger)index
 {
-
+	// perform insertion of text here
+	[self.textView insertText:[NSString stringWithFormat: @"%ld", (long)index]];
+		
 }
 
 @end
