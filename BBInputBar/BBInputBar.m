@@ -95,6 +95,15 @@ static NSString * const kExceptionMessageTitleInvalidIndex = @"Index out of boun
 	[self generateButtonWidthCache];
 }
 
+-(NSString*)getTitleAtIndex:(NSInteger)index {
+    
+    if (index>= self.buttons.count)
+    {
+        [NSException raise:kExceptionTitle format:kExceptionMessageTitleInvalidIndex];
+    }
+    return [self.buttons[index] title];
+}
+
 - (void)setImage:(UIImage*)image atIndex:(NSInteger)index
 {
 	if (index >= self.buttons.count)

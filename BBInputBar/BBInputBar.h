@@ -29,6 +29,7 @@
 - (void)addButtonWithImage:(UIImage*)image;
 
 - (void)setTitle:(NSString*)title atIndex:(NSInteger)index;
+- (NSString*)getTitleAtIndex:(NSInteger)index;
 - (void)setImage:(UIImage*)image atIndex:(NSInteger)index;
 
 - (void)updateTitles:(NSArray*)titles;
