@@ -12,7 +12,6 @@
 
 @interface BBViewController () <BBInputBarDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (nonatomic, strong) NSArray *buttonTitles;
 @end
 
 @implementation BBViewController
@@ -43,7 +42,8 @@
 
 - (void)inputBar:(BBInputBar *)inputBar didPressButtonAtIndex:(NSInteger)index
 {
-
+    // Example of inserting text
+    [self.textView insertText:[inputBar getTitleAtIndex:index]];
 }
 
 @end
